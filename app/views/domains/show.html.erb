@@ -9,6 +9,13 @@
   <strong>Region:</strong>
   <%= @domain.region %>
 </p>
-
+  <%= debug @domain %>
+  <p>
+    <b>Title:</b>
+    <%=form_for (@domain) do | message2 | %>
+      <li><%= message2 %></li>
+    <% end %>
+    
+  </p>
 <%= link_to 'Edit', edit_domain_path(@domain) %> |
 <%= link_to 'Back', domains_path %>

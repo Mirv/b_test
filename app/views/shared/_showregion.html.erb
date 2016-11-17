@@ -1,0 +1,11 @@
+<td>
+    <% @o = object.regions %>
+    <% @o.each do |r| %>
+       <tr>
+           <td><%= r.name %></td><td></td> <td></td>
+           <td><%= link_to 'Show', r %></td>
+           <td><%= link_to 'Edit', edit_region_path(r) %></td>
+           <td><%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>   
+   <% end %> 
+</td>

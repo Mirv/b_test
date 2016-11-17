@@ -5,6 +5,11 @@ class ContinentsController < ApplicationController
   # GET /continents.json
   def index
     @continents = Continent.all
+    
+    ### Unelegant - this writes over Regionw we already have access too via the model
+    #@regions = []
+      # need all regions to list in nested form
+    #@continents.each do | x | x = x.regions end
   end
 
   # GET /continents/1
@@ -69,6 +74,7 @@ class ContinentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def continent_params
-      params.require(:continent).permit(:name)
+      params.require(:continent).permit(:name, :id, 
+        region_attributes: [:id, :_destroy, :name, :continent_id])
     end
 end

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Continents</h1>
+<h1>Listing Continents - <%= pluralize(@continents.count, "continents") %> total ...</h1>
 
 <table>
   <thead>
@@ -11,13 +11,15 @@
   </thead>
 
   <tbody>
-    <% @continents.each do |continent| %>
+    <% @continents.each do |x| %>
       <tr>
-        <td><%= continent.name %></td>
-        <td><%= link_to 'Show', continent %></td>
-        <td><%= link_to 'Edit', edit_continent_path(continent) %></td>
-        <td><%= link_to 'Destroy', continent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= x.name %></td>
+        <td> <%= pluralize(x.regions.count, "regions") %></td>
+        <td><%= link_to 'Show', x %></td>
+        <td><%= link_to 'Edit', edit_continent_path(x) %></td>
+        <td><%= link_to 'Destroy', x, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <%= render 'shared/showregion', object: x %>
     <% end %>
   </tbody>
 </table>

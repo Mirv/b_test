@@ -1,0 +1,28 @@
+___Working___
+    <ul><td><%= object.regions.first.name %></td> 
+
+
+___Not working___
+    showregionlist.html.erb needs to have the calling page setup to be a list
+      
+      
+###
+__controller_show__
+
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
+  end
+
+__view_show__
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+    
+__errors__
+  <% object.errors.full_messages.each do |msg| %>

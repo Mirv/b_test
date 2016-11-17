@@ -10,6 +10,8 @@ class DomainsController < ApplicationController
   # GET /domains/1
   # GET /domains/1.json
   def show
+    @domains = Domain.find(params[:id])
+    @h = []
   end
 
   # GET /domains/new

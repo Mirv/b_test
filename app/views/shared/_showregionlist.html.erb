@@ -1,0 +1,10 @@
+<ul>
+    <% @o = object.regions %>
+    <% @o.each do |r| %>
+           <li><%= r.name %> 
+           <%= link_to 'Show', r %>
+           <%= link_to 'Edit', edit_region_path(r) %>
+           <%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+   <% end %> 
+</ul>
