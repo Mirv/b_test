@@ -3,7 +3,7 @@ ___Working___
 
 
 ___Not working___
-    showregionlist.html.erb needs to have the calling page setup to be a list
+   Can't be sure showregion.html.erb is actually being passed the object when it is rendered
       
       
 ###

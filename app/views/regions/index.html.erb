@@ -14,8 +14,8 @@
   <tbody>
     <% @regions.each do |region| %>
       <tr>
-        <td><%= region.name %></td>
-        <td><%= region.continent %></td>
+        <td>Region:  <%= region.name %></td>
+        <td>Continent ID:  <%= region.continent && region.continent.name %></td>
         <td><%= link_to 'Show', region %></td>
         <td><%= link_to 'Edit', edit_region_path(region) %></td>
         <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>

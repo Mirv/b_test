@@ -1,0 +1,3 @@
+Post.find(params[:post_id])
+
+region.continent && region.continent.name   ## To pull an association
