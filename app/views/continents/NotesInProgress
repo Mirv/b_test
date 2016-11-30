@@ -4,6 +4,7 @@ ___Working___
 
 ___Not working___
    Can't be sure showregion.html.erb is actually being passed the object when it is rendered
+    #passed this by making it local
       
       
 ###

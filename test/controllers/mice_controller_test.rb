@@ -18,7 +18,7 @@ class MiceControllerTest < ActionController::TestCase
 
   test "should create mouse" do
     assert_difference('Mouse.count') do
-      post :create, mouse: { continent_id: @mouse.continent_id, domain: @mouse.domain, name: @mouse.name }
+      post :create, mouse: { domain_id: @mouse.domain_id, name: @mouse.name }
     end
 
     assert_redirected_to mouse_path(assigns(:mouse))
@@ -35,7 +35,7 @@ class MiceControllerTest < ActionController::TestCase
   end
 
   test "should update mouse" do
-    patch :update, id: @mouse, mouse: { continent_id: @mouse.continent_id, domain: @mouse.domain, name: @mouse.name }
+    patch :update, id: @mouse, mouse: { domain_id: @mouse.domain_id, name: @mouse.name }
     assert_redirected_to mouse_path(assigns(:mouse))
   end
 

@@ -69,6 +69,6 @@ class MiceController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mouse_params
-      params.require(:mouse).permit(:name, :domain, :continent_id)
+      params.require(:mouse).permit(:name, :domain_id)
     end
 end

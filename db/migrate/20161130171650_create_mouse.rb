@@ -1,11 +1,8 @@
-class CreateMice < ActiveRecord::Migration
+class CreateMouse < ActiveRecord::Migration
   def change
     create_table :mice do |t|
       t.string :name
-      t.integer :domain
       t.references :continent, index: true, foreign_key: true
-
-      t.timestamps null: false
     end
   end
 end

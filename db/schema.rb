@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111133929) do
+ActiveRecord::Schema.define(version: 20161130171650) do
 
   create_table "continents", force: :cascade do |t|
     t.string   "name"
@@ -24,32 +23,21 @@ ActiveRecord::Schema.define(version: 20161111133929) do
     t.integer  "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  add_index "domains", ["region_id"], name: "index_domains_on_region_id"
-
-  create_table "domains2s", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["region_id"], name: "index_domains_on_region_id"
   end
 
   create_table "mice", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "domain"
-    t.integer  "continent_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string  "name"
+    t.integer "continent_id"
+    t.index ["continent_id"], name: "index_mice_on_continent_id"
   end
-
-  add_index "mice", ["continent_id"], name: "index_mice_on_continent_id"
 
   create_table "regions", force: :cascade do |t|
     t.string   "name"
     t.integer  "continent_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["continent_id"], name: "index_regions_on_continent_id"
   end
-
-  add_index "regions", ["continent_id"], name: "index_regions_on_continent_id"
 
 end

@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  domain: 1
-  continent_id: 
+  domain_id: 
 
 two:
   name: MyString
-  domain: 1
-  continent_id: 
+  domain_id: 
