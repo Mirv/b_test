@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130171650) do
+ActiveRecord::Schema.define(version: 20161201124411) do
 
   create_table "continents", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20161130171650) do
   create_table "mice", force: :cascade do |t|
     t.string  "name"
     t.integer "continent_id"
+    t.integer "domain_id"
     t.index ["continent_id"], name: "index_mice_on_continent_id"
   end
 

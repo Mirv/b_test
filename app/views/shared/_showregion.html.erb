@@ -5,4 +5,7 @@
            <td><%= link_to 'Edit', edit_region_path(r) %></td>
            <td><%= link_to 'Destroy', r, method: :delete, data: { confirm: 'Are you sure?' } %></td>
        </tr>   
+        <% r.domains.each do | thedomains | %>
+            <%= render partial: 'shared/showdomain', locals: {dd: thedomains} %>
+        <% end %>    
 </td>

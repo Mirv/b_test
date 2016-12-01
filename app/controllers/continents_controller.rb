@@ -75,6 +75,6 @@ class ContinentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def continent_params
       params.require(:continent).permit(:name, :id, 
-        region_attributes: [:id, :_destroy, :name, :continent_id])
+        { region_attributes: [:id, :_destroy, :name, :continent_id]})
     end
 end

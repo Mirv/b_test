@@ -1,49 +1,48 @@
 require 'test_helper'
 
-class MiceControllerTest < ActionController::TestCase
+class MiceControllerTest < ActionDispatch::IntegrationTest
   setup do
     @mouse = mice(:one)
   end
 
   test "should get index" do
-    get :index
+    get mice_url
     assert_response :success
-    assert_not_nil assigns(:mice)
   end
 
   test "should get new" do
-    get :new
+    get new_mouse_url
     assert_response :success
   end
 
   test "should create mouse" do
     assert_difference('Mouse.count') do
-      post :create, mouse: { domain_id: @mouse.domain_id, name: @mouse.name }
+      post mice_url, params: { mouse: { one: :one } }
     end
 
-    assert_redirected_to mouse_path(assigns(:mouse))
+    assert_redirected_to mouse_url(Mouse.last)
   end
 
   test "should show mouse" do
-    get :show, id: @mouse
+    get mouse_url(@mouse)
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @mouse
+    get edit_mouse_url(@mouse)
     assert_response :success
   end
 
   test "should update mouse" do
-    patch :update, id: @mouse, mouse: { domain_id: @mouse.domain_id, name: @mouse.name }
-    assert_redirected_to mouse_path(assigns(:mouse))
+    patch mouse_url(@mouse), params: { mouse: { one: :one } }
+    assert_redirected_to mouse_url(@mouse)
   end
 
   test "should destroy mouse" do
     assert_difference('Mouse.count', -1) do
-      delete :destroy, id: @mouse
+      delete mouse_url(@mouse)
     end
 
-    assert_redirected_to mice_path
+    assert_redirected_to mice_url
   end
 end

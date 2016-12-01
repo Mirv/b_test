@@ -1,49 +1,48 @@
 require 'test_helper'
 
-class RegionsControllerTest < ActionController::TestCase
+class RegionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @region = regions(:one)
   end
 
   test "should get index" do
-    get :index
+    get regions_url
     assert_response :success
-    assert_not_nil assigns(:regions)
   end
 
   test "should get new" do
-    get :new
+    get new_region_url
     assert_response :success
   end
 
   test "should create region" do
     assert_difference('Region.count') do
-      post :create, region: { continent_id: @region.continent_id, name: @region.name }
+      post regions_url, params: { region: { one: :one } }
     end
 
-    assert_redirected_to region_path(assigns(:region))
+    assert_redirected_to region_url(Region.last)
   end
 
   test "should show region" do
-    get :show, id: @region
+    get region_url(@region)
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @region
+    get edit_region_url(@region)
     assert_response :success
   end
 
   test "should update region" do
-    patch :update, id: @region, region: { continent_id: @region.continent_id, name: @region.name }
-    assert_redirected_to region_path(assigns(:region))
+    patch region_url(@region), params: { region: { one: :one } }
+    assert_redirected_to region_url(@region)
   end
 
   test "should destroy region" do
     assert_difference('Region.count', -1) do
-      delete :destroy, id: @region
+      delete region_url(@region)
     end
 
-    assert_redirected_to regions_path
+    assert_redirected_to regions_url
   end
 end

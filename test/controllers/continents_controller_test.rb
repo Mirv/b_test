@@ -1,49 +1,48 @@
 require 'test_helper'
 
-class ContinentsControllerTest < ActionController::TestCase
+class ContinentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @continent = continents(:one)
   end
 
   test "should get index" do
-    get :index
+    get continents_url
     assert_response :success
-    assert_not_nil assigns(:continents)
   end
 
   test "should get new" do
-    get :new
+    get new_continent_url
     assert_response :success
   end
 
   test "should create continent" do
     assert_difference('Continent.count') do
-      post :create, continent: { name: @continent.name }
+      post continents_url, params: { continent: { one: :one } }
     end
 
-    assert_redirected_to continent_path(assigns(:continent))
+    assert_redirected_to continent_url(Continent.last)
   end
 
   test "should show continent" do
-    get :show, id: @continent
+    get continent_url(@continent)
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @continent
+    get edit_continent_url(@continent)
     assert_response :success
   end
 
   test "should update continent" do
-    patch :update, id: @continent, continent: { name: @continent.name }
-    assert_redirected_to continent_path(assigns(:continent))
+    patch continent_url(@continent), params: { continent: { one: :one } }
+    assert_redirected_to continent_url(@continent)
   end
 
   test "should destroy continent" do
     assert_difference('Continent.count', -1) do
-      delete :destroy, id: @continent
+      delete continent_url(@continent)
     end
 
-    assert_redirected_to continents_path
+    assert_redirected_to continents_url
   end
 end
